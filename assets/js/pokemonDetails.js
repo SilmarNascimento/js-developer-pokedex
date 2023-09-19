@@ -1,14 +1,26 @@
 let details = false;
 
-// const btnCard = document.getElementsByClassName("grass");
-// console.log(btnCard.length);
-// for(let index = 0; index < btnCard.length; index +=1) {
-//   console.log('entrei aqui');
-//   btnCard[index].addEventListener('click', (event) => {
-//     event.preventDefault();
-//     details = true;
-//     const { target } = event;
-//     const number = index;
-//     console.log(number);
-//   })
-// }
+const createPokemonDetailsCard = (pokeObj) => {
+  console.log(pokeObj);
+  const contentList = document.getElementsByClassName("content");
+  console.log(contentList);
+  contentList[0].style.display = 'none';
+}
+
+const createCard = (pokeObj) => {
+    return `
+    <section>
+    <div>
+        <h1>${pokeObj.name}</h1>
+        <span>${pokeObj.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}</span>
+        <span>${pokeObj.id}</span>
+        <img src="" alt="imagem do pokemon">
+    </div>
+    <section>
+        <ul>
+            ${pokeObj.abilities.map((ability) => `<li>${ability.name}</li>`).join('')}
+        </ul>
+    </section>
+    </section>
+    `
+}

@@ -5,20 +5,6 @@ const maxRecords = 151
 const limit = 10
 let offset = 0;
 
-const pokemonList = 
-    `<section class="content">
-        <h1>Pokedex</h1>
-
-        <ol id="pokemonList" class="pokemons">
-        </ol>
-
-        <div class="pagination">
-            <button id="loadMoreButton" type="button">
-                Load More
-            </button>
-        </div>
-    </section>`;
-
 function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon ${pokemon.type} card">
@@ -47,7 +33,7 @@ function loadPokemonItens(offset, limit) {
             event.preventDefault();
             details = true;
             const number = index;
-            pokeApi.getPokemonInformation(number).then((data) => console.log(data))
+            pokeApi.getPokemonInformation(number).then((data) => createPokemonDetailsCard(data))
         })
         }
     })
