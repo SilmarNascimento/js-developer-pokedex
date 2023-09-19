@@ -22,33 +22,37 @@ const createCard = (pokeObj) => {
     const imageURL = pokeObj.sprites.other.dream_world.front_default;
     return `
     <section id="card-details">
-        <div class="btn-header">
-            <button id="back-to-list" type="button">
-                <--
-            </button>
-            <button id="favorit-list" type="button">
-                <3
-            </button>   
-        </div>
-        <div>
-            <h1 id="name">${pokeObj.name}</h1>
-            <span>${pokeObj.types.map(({type}) => `<li class="type ${type.name}">${type.name}</li>`).join('')}</span>
-            <span>${pokeObj.id}</span>
+        <section class="header">
+            <div class="btn-header">
+                <button id="back-to-list" type="button">
+                    <--
+                </button>
+                <button id="favorit-list" type="button">
+                    <3
+                </button>   
+            </div>
+            <div class="text-header">
+                <h1 id="name">${pokeObj.name}</h1>
+                <span># ${pokeObj.id}</span>    
+            </div>
+            <div class="type-card">
+                <span class="types">${pokeObj.types.map(({type}) => `<li class="type ${type.name}">${type.name}</li>`).join('')}</span>
+            </div>
             <img src="${imageURL}" alt="imagem do pokemon">
-        </div>
-        <section>
-            <h2>Status</h2>
+        </section>
+        <section class="text">
+            <h2>status</h2>
             <ul>
-                ${pokeObj.stats.map(({stat, base_stat}) => {
-                    const statusName = stat.name;
-                    const statusValue = base_stat;
-                    return `<li>${statusName}: ${statusValue}</li>`;
-                }).join('')}
+            ${pokeObj.stats.map(({stat, base_stat}) => {
+                const statusName = stat.name;
+                const statusValue = base_stat;
+                return `<li>${statusName}: ${statusValue}</li>`;
+            }).join('')}
             </ul>
-            <h2>Abilities</h2>
-                <ul>
-                    ${pokeObj.abilities.map(({ability}) => `<li>${ability.name}</li>`).join('')}
-                </ul>
+            <h2>abilities</h2>
+            <ul>
+                ${pokeObj.abilities.map(({ability}) => `<li>${ability.name}</li>`).join('')}
+            </ul>
         </section>
     </section>
     `
