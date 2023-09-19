@@ -1,0 +1,9 @@
+.btn-header {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
