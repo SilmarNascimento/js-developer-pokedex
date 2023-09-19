@@ -32,4 +32,10 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails) => pokemonsDetails)
+};
+
+pokeApi.getPokemonInformation = async (pokemon) => {
+    const response  =  await fetch(pokemon.url);
+    const data = await response.json();
+    return data;
 }
