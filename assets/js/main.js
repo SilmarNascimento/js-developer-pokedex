@@ -21,25 +21,38 @@ const pokemonList =
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type} btn-card">
-            <span class="number">#${pokemon.number}</span>
-            <span class="name">${pokemon.name}</span>
+        <button class="card-btn">
+            <li class="pokemon ${pokemon.type}">
+                <span class="number">#${pokemon.number}</span>
+                <span class="name">${pokemon.name}</span>
 
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                </ol>
+                <div class="detail">
+                    <ol class="types">
+                        ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                    </ol>
 
-                <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
-            </div>
-        </li>`
+                    <img src="${pokemon.photo}"
+                        alt="${pokemon.name}">
+                </div>
+            </li>
+        </button>
+    `
 }
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonListElement.innerHTML += newHtml
+        const btnCard = document.getElementsByClassName("card-btn");
+        console.log(btnCard);
+        for(let index = 0; index < btnCard.length; index +=1) {
+            btnCard[index].addEventListener('click', (event) => {
+            event.preventDefault();
+            details = true;
+            const number = index;
+            pokeApi.getPokemonInformation(number).then((data) => console.log(data))
+        })
+        }
     })
 }
 
