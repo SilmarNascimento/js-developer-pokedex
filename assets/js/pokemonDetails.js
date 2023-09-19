@@ -10,7 +10,7 @@ const createPokemonDetailsCard = (pokeObj) => {
   backpageBtn.addEventListener('click', backToPageList)
 }
 
-const backToPageList = (cardContainer) => {
+const backToPageList = () => {
   contentList.style.display = '';
   const cardElement = document.getElementById('card-details')
   cardElement.parentNode.removeChild(cardElement);
@@ -31,7 +31,7 @@ const createCard = (pokeObj) => {
             </button>   
         </div>
         <div>
-            <h1>${pokeObj.name}</h1>
+            <h1 id="name">${pokeObj.name}</h1>
             <span>${pokeObj.types.map(({type}) => `<li class="type ${type.name}">${type.name}</li>`).join('')}</span>
             <span>${pokeObj.id}</span>
             <img src="${imageURL}" alt="imagem do pokemon">
@@ -47,7 +47,7 @@ const createCard = (pokeObj) => {
             </ul>
             <h2>Abilities</h2>
                 <ul>
-                    ${pokeObj.abilities.map((ability) => `<li>${ability.name}</li>`).join('')}
+                    ${pokeObj.abilities.map(({ability}) => `<li>${ability.name}</li>`).join('')}
                 </ul>
         </section>
     </section>

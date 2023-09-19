@@ -7,3 +7,12 @@
   align-items: center;
   justify-content: space-between;
 }
+
+h1 #name {
+  text-transform: capitalize;
+}
+
+ul li {
+  list-style: none;
+  background-color: red;
+}
